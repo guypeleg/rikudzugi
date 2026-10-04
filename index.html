@@ -132,6 +132,27 @@
   }
   #lightbox-close:hover { opacity: 1; }
 
+  /* REVIEWS */
+  #reviews { border-top: 1px solid rgba(201,151,58,0.15); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: start; }
+  .review {
+    position: relative; margin: 0; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,151,58,0.2); border-radius: 14px; padding: 2.2rem 1.6rem 1.6rem;
+  }
+  .review::before {
+    content: "”"; position: absolute; top: 0.4rem; right: 1.2rem;
+    font-family: 'Frank Ruhl Libre', serif; font-size: 3.2rem; line-height: 1; color: var(--gold); opacity: 0.55;
+  }
+  .review p { white-space: pre-line; color: var(--soft); font-size: 1rem; line-height: 1.75; font-weight: 300; }
+  .review footer { border: 0; padding: 0; margin-top: 1.1rem; text-align: right; font-size: 1rem; color: var(--cream); }
+  .review cite { font-style: normal; font-family: 'Frank Ruhl Libre', serif; font-weight: 700; color: var(--gold); font-size: 1.1rem; }
+  .review .reviewer-role { display: block; margin-top: 0.25rem; font-size: 0.88rem; color: var(--rose); line-height: 1.5; }
+  .review.featured {
+    grid-column: 1 / -1; background: rgba(139,26,58,0.22); border-color: rgba(201,151,58,0.45);
+    padding: 2.6rem 2.4rem 2rem; max-width: 760px; justify-self: center; width: 100%;
+  }
+  .review.featured p { font-size: 1.15rem; color: var(--cream); }
+
   /* PERFORMERS */
   #performers { border-top: 1px solid rgba(201,151,58,0.15); }
   .performers-grid {
@@ -166,10 +187,14 @@
   footer span { color: var(--rose); }
 
   @media (max-width: 600px) {
-    nav { gap: 1.2rem; font-size: 0.85rem; }
+    nav { gap: 0.9rem; font-size: 0.82rem; padding: 1rem 0.8rem; }
+    nav a { white-space: nowrap; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-flow: dense; gap: 8px; }
     .g-item.wide { grid-column: span 2; aspect-ratio: 3/2; }
     .performers-grid { grid-template-columns: 1fr; max-width: 280px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .review.featured { padding: 2.4rem 1.6rem 1.6rem; }
+    .review.featured p { font-size: 1.05rem; }
     .contact-cards { flex-direction: column; align-items: center; }
   }
 </style>
@@ -180,6 +205,7 @@
   <a href="#hero">בית</a>
   <a href="#about">על ההצגה</a>
   <a href="#gallery">גלריה</a>
+  <a href="#reviews">המלצות</a>
   <a href="#performers">היוצרים</a>
   <a href="#contact">צרו קשר</a>
 </nav>
@@ -242,6 +268,37 @@
   <button id="lightbox-close" onclick="closeLightbox()">✕</button>
   <img id="lightbox-img" src="" alt="">
 </div>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-title">מה אמרו הצופים</div>
+  <div class="reviews-grid">
+    <blockquote class="review featured">
+      <p>הייתי הערב בהצגה מעולה.
+להצגה קוראים ׳הזוג הזה – הריקוד שאינו נגמר׳.
+משחקים בה דפנה וגיא פלג, שהם גם זוג נהדר בחיים וגם זוג משובח על הבמה 🔥
+ההצגה מרגשת, מצחיקה, מפתיעה ומעבירה מסר נפלא על איך אפשר לעשות זוגיות משובחת 🤩
+כשההצגה תעלה שוב – רוצו 💕</p>
+      <footer><cite>ד״ר מיכל צוקר</cite><span class="reviewer-role">יועצת זוגית ומשפחתית, מייסדת בית הספר נמש למקצועות המשפחה</span></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>הצגה משובחת של זוג מוכשר מאד שנוגעת בצורה חכמה, רגישה ורלוונטית בנימים הכי עדינים של הזוגיות.. מומלץ ביותר!!</p>
+      <footer><cite>עמוס ברוך</cite></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>״הזוג הזה״ – הצגה שנונה, יפה ומצחיקה, מלאה בתובנות לחיים, סיטואציות שכל כך קל לזהות בהן את עצמנו… וזוויות ראייה שתמיד שווה לאמץ.
+והשילוב הטכנולוגי יחד איתכם על הבמה הפך את היצירה למיוחדת, מעניינת ומרתקת – ממש חלק מהסיפור ולא רק גימיק.
+גיא ודפנה, אתם זוג נפלא – ולא רק על הבמה, קודם כל בחיים.
+ממליצה בחוםםם!
+תודה על ערב כיפי, מצחיק ומעורר מחשבה ❤️</p>
+      <footer><cite>זהבית כהן</cite></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>מחזה פותח מחשבה על זוגיות, מלא בהומור, משלב בתוכו שירי מחזמר, AI וספוקן וורד מרשים, שחקנים מקסימים, מומלץ</p>
+      <footer><cite>שחר</cite></footer>
+    </blockquote>
+  </div>
+</section>
 
 <!-- PERFORMERS -->
 <section id="performers">
