@@ -134,7 +134,9 @@
 
   /* REVIEWS */
   #reviews { border-top: 1px solid rgba(201,151,58,0.15); }
-  .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; align-items: start; }
+  .reviews-featured { display: flex; justify-content: center; margin-bottom: 1.2rem; }
+  .reviews-grid { column-count: 3; column-gap: 1.2rem; }
+  .reviews-grid .review { break-inside: avoid; margin-bottom: 1.2rem; }
   .review {
     position: relative; margin: 0; background: rgba(255,255,255,0.05);
     border: 1px solid rgba(201,151,58,0.2); border-radius: 14px; padding: 2.2rem 1.6rem 1.6rem;
@@ -148,10 +150,22 @@
   .review cite { font-style: normal; font-family: 'Frank Ruhl Libre', serif; font-weight: 700; color: var(--gold); font-size: 1.1rem; }
   .review .reviewer-role { display: block; margin-top: 0.25rem; font-size: 0.88rem; color: var(--rose); line-height: 1.5; }
   .review.featured {
-    grid-column: 1 / -1; background: rgba(139,26,58,0.22); border-color: rgba(201,151,58,0.45);
-    padding: 2.6rem 2.4rem 2rem; max-width: 760px; justify-self: center; width: 100%;
+    background: rgba(139,26,58,0.22); border-color: rgba(201,151,58,0.45);
+    padding: 2.6rem 2.4rem 2rem; max-width: 760px; width: 100%;
   }
   .review.featured p { font-size: 1.15rem; color: var(--cream); }
+
+  .review.more { display: none; }
+  #reviews.show-all .review.more { display: block; }
+  .reviews-more-wrap { text-align: center; margin-top: 0.8rem; }
+  .reviews-more-btn {
+    font-family: inherit; font-size: 1rem; color: var(--gold); background: transparent;
+    border: 1px solid rgba(201,151,58,0.55); border-radius: 999px; padding: 0.7rem 1.8rem; cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  @media (max-width: 900px) and (min-width: 601px) { .reviews-grid { column-count: 2; } }
+  .reviews-more-btn:hover { background: var(--gold); color: var(--deep); }
+  #reviews.show-all .reviews-more-wrap { display: none; }
 
   /* PERFORMERS */
   #performers { border-top: 1px solid rgba(201,151,58,0.15); }
@@ -192,7 +206,7 @@
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-flow: dense; gap: 8px; }
     .g-item.wide { grid-column: span 2; aspect-ratio: 3/2; }
     .performers-grid { grid-template-columns: 1fr; max-width: 280px; }
-    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-grid { column-count: 1; }
     .review.featured { padding: 2.4rem 1.6rem 1.6rem; }
     .review.featured p { font-size: 1.05rem; }
     .contact-cards { flex-direction: column; align-items: center; }
@@ -272,7 +286,7 @@
 <!-- REVIEWS -->
 <section id="reviews">
   <div class="section-title">מה אמרו הצופים</div>
-  <div class="reviews-grid">
+  <div class="reviews-featured">
     <blockquote class="review featured">
       <p>הייתי הערב בהצגה מעולה.
 להצגה קוראים ׳הזוג הזה – הריקוד שאינו נגמר׳.
@@ -281,10 +295,8 @@
 כשההצגה תעלה שוב – רוצו 💕</p>
       <footer><cite>ד״ר מיכל צוקר</cite><span class="reviewer-role">יועצת זוגית ומשפחתית, מייסדת בית הספר נמש למקצועות המשפחה</span></footer>
     </blockquote>
-    <blockquote class="review">
-      <p>הצגה משובחת של זוג מוכשר מאד שנוגעת בצורה חכמה, רגישה ורלוונטית בנימים הכי עדינים של הזוגיות.. מומלץ ביותר!!</p>
-      <footer><cite>עמוס ברוך</cite></footer>
-    </blockquote>
+  </div>
+  <div class="reviews-grid">
     <blockquote class="review">
       <p>״הזוג הזה״ – הצגה שנונה, יפה ומצחיקה, מלאה בתובנות לחיים, סיטואציות שכל כך קל לזהות בהן את עצמנו… וזוויות ראייה שתמיד שווה לאמץ.
 והשילוב הטכנולוגי יחד איתכם על הבמה הפך את היצירה למיוחדת, מעניינת ומרתקת – ממש חלק מהסיפור ולא רק גימיק.
@@ -294,10 +306,45 @@
       <footer><cite>זהבית כהן</cite></footer>
     </blockquote>
     <blockquote class="review">
+      <p>הצגה משובחת של זוג מוכשר מאד שנוגעת בצורה חכמה, רגישה ורלוונטית בנימים הכי עדינים של הזוגיות.. מומלץ ביותר!!</p>
+      <footer><cite>עמוס ברוך</cite></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>ההצגה מאוד מוצלחת מכל הבחינות, דינמית, מעניינת, עשויה בכשרון רב ובמקצועיות, מאפשרת הזדהות בקרב כל סוגי הצופים, ומותירה בליבם גם אחרי שהיא מסתיימת, מחשבות ותובנות חשובות לחיים הזוגיים בפרט ולתקשורת בין אישית בכלל 😘</p>
+      <footer><cite>עו״ד מיכל דנאי עיני</cite></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>הופעה מרשימה בנושא רגיש במיוחד.
+התפאורה והאנימציה היפה, המשחק המדויק והשילוב הנהדר של כישרון משחק ושירה – כל אלו יצרו חוויה סוחפת ומהנה.</p>
+      <footer><cite>זהבית שטנר</cite></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>ההצגה הייתה מעניינת, מצחיקה, דינמית, הופעה מוצלחת של שניכם ואפשר היה בעיקר להזדהות איתה.
+טיפול זוגי במחיר מוצלח 😊</p>
+      <footer><cite>סיגלית שובל</cite></footer>
+    </blockquote>
+    <blockquote class="review">
+      <p>נהננו מאד, ההצגה מקצועית, מצחיקה, יצירתית עם מסרים מעצימים. מקצועי, מושקע, מגוון – לא היה רגע דל, היה עשוי לתפארת</p>
+      <footer><cite>נעמה חמו</cite></footer>
+    </blockquote>
+    <blockquote class="review more">
+      <p>התרגשתי, צחקתי, בכיתי.. ממש נהנתי ומצאתי את עצמי בהמון סיטואציות שם. ממש ממש רעיון יפה והביצוע שלכם היה מעלף! והרפרנסים לשתי ההפקות האחרונות של ווקאלט פשוט היסטרייייי 🤣🩷</p>
+      <footer><cite>זימרה בלכר</cite></footer>
+    </blockquote>
+    <blockquote class="review more">
+      <p>שחקנים מעולים!!! והרעיון של הטיפול הזוגי היה ממש יפה ועם ערך מוסף.</p>
+      <footer><cite>חן אטלס</cite></footer>
+    </blockquote>
+    <blockquote class="review more">
       <p>מחזה פותח מחשבה על זוגיות, מלא בהומור, משלב בתוכו שירי מחזמר, AI וספוקן וורד מרשים, שחקנים מקסימים, מומלץ</p>
       <footer><cite>שחר</cite></footer>
     </blockquote>
+    <blockquote class="review more">
+      <p>היה מדהים, מצחיק, מלמד, יצאנו עם תובנות והנאה מרובה</p>
+      <footer><cite>עינבר גיל</cite></footer>
+    </blockquote>
   </div>
+  <div class="reviews-more-wrap"><button type="button" class="reviews-more-btn" id="reviewsMoreBtn" aria-expanded="false">להמלצות נוספות</button></div>
 </section>
 
 <!-- PERFORMERS -->
@@ -360,6 +407,11 @@
     item.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(img.src, img.alt); }
     });
+  });
+  var moreBtn = document.getElementById('reviewsMoreBtn');
+  if (moreBtn) moreBtn.addEventListener('click', function() {
+    document.getElementById('reviews').classList.add('show-all');
+    moreBtn.setAttribute('aria-expanded', 'true');
   });
   document.getElementById('lightbox').addEventListener('click', function(e) {
     if (e.target === this) closeLightbox();
