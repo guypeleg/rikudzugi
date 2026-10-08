@@ -171,16 +171,19 @@
   #performers { border-top: 1px solid rgba(201,151,58,0.15); }
   .performers-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; max-width: 620px; margin: 0 auto;
+    gap: 2rem; max-width: 960px; margin: 0 auto; align-items: start;
   }
   .performer-card {
     background: rgba(255,255,255,0.05); border: 1px solid rgba(201,151,58,0.2);
-    border-radius: 14px; padding: 2rem 1.5rem; text-align: center; transition: background 0.2s;
+    border-radius: 14px; padding: 2.2rem 2rem 2rem; text-align: center; transition: background 0.2s;
   }
   .performer-card:hover { background: rgba(255,255,255,0.08); }
   .performer-icon { font-size: 2.8rem; margin-bottom: 1rem; }
-  .performer-name { font-family: 'Frank Ruhl Libre', serif; font-size: 1.35rem; font-weight: 700; color: var(--gold); margin-bottom: 0.4rem; }
-  .performer-role { font-size: 0.88rem; color: var(--rose); letter-spacing: 0.06em; text-transform: uppercase; }
+  .performer-name { font-family: 'Frank Ruhl Libre', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); margin-bottom: 0.4rem; }
+  .performer-role { font-size: 0.95rem; color: var(--rose); letter-spacing: 0.04em; line-height: 1.6; }
+  .performer-bio { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(201,151,58,0.2); text-align: right; }
+  .performer-bio p { color: var(--soft); font-size: 1rem; line-height: 1.8; font-weight: 300; }
+  .performer-bio p + p { margin-top: 0.9rem; }
 
   /* CONTACT */
   #contact { border-top: 1px solid rgba(201,151,58,0.15); text-align: center; }
@@ -205,7 +208,8 @@
     nav a { white-space: nowrap; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-flow: dense; gap: 8px; }
     .g-item.wide { grid-column: span 2; aspect-ratio: 3/2; }
-    .performers-grid { grid-template-columns: 1fr; max-width: 280px; }
+    .performers-grid { grid-template-columns: 1fr; }
+    .performer-card { padding: 2rem 1.4rem 1.6rem; }
     .reviews-grid { column-count: 1; }
     .review.featured { padding: 2.4rem 1.6rem 1.6rem; }
     .review.featured p { font-size: 1.05rem; }
@@ -423,12 +427,20 @@
     <div class="performer-card">
       <div class="performer-icon">🎭</div>
       <div class="performer-name">דפנה פלג</div>
-      <div class="performer-role">יוצרת ושחקנית</div>
+      <div class="performer-role">יוצרת, שחקנית וזמרת · יועצת זוגית ומשפחתית</div>
+      <div class="performer-bio">
+        <p>דפנה פלג היא שחקנית וזמרת, בוגרת בית הספר למשחק ופיתוח קול של משה ודינה ופניק. השתתפה בהפקות תיאטרון מגוונות, בהן: ׳הדוד וניה׳ בתפקיד ילנה, ׳תעלולי סקפן׳ בתפקיד היאסנט, ׳אופרה בגרוש׳ בתפקיד פולי פיצ׳ם והצגות ילדים במסגרת תיאטרון ׳גושן׳. במסגרת ההרכב הווקאלי־תיאטרלי Vocalet השתתפה במופע ׳לילות פריז׳ – ערב שאנסונים צרפתיים, ובמחזמר ׳שיקגו׳ בתפקיד רוקסי הארט.</p>
+        <p>לצד פעילותה הבימתית, דפנה היא אשת חינוך מנוסה, המשמשת כיום כקצינת ביקור סדיר, ומילאה תפקידים שונים כמורה לאנגלית, מנחת צוותי חינוך ומנחת הורים במכללת ההורים של עיריית ראשון לציון. בנוסף, היא יועצת זוגית ומשפחתית, בוגרת מכון אדלר ובית הספר לייעוץ משפחתי של מיכל דליות, בעלת תואר שני בחינוך ותעודת Master ב־NLP.</p>
+      </div>
     </div>
     <div class="performer-card">
       <div class="performer-icon">🎵</div>
       <div class="performer-name">גיא פלג</div>
       <div class="performer-role">יוצר ושחקן</div>
+      <div class="performer-bio">
+        <p>גיא פלג הוא יוצר ושחקן, בוגר בית הספר למשחק של משה ופניק, שם גם שימש כמורה למשחק ואימפרוביזציה. גילם תפקידים ראשיים בהצגה ׳הדוד וניה׳ מאת צ׳כוב בתפקיד הדוד וניה, ובהצגה ׳תעלולי סקפן׳ מאת מולייר בתפקיד סקפן.</p>
+        <p>בנוסף לפעילותו האמנותית, גיא הוא מהנדס תוכנה בכיר עם למעלה מ־25 שנות ניסיון בתעשייה.</p>
+      </div>
     </div>
   </div>
 </section>
